@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <h1>Check out these spots {{request.session.name}}</h1>
+        <br>
+        <a href="/">Log Out</a>
+        <br>
+        <a href="/success">Home</a>
+        <br>
+
+        {% for thing in travel %}
+        <h1>{{thing.destination}}</h1>
+        <p>Who's Going? {{thing.user.name}} </p>
+        <p>What are they doing? {{thing.plans}} </p>
+        <p>When do they leave? {{thing.startdate}}</p>
+        <p>When do they get back? {{thing.enddate}} </p>
+        {% endfor %}
+    
+</body>
+</html>

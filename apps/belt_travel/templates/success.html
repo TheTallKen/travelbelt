@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <h1>Success! Welcome, {{request.session.name}}</h1>
+    <br>
+    <a href="/">Log Out</a>
+    <br>
+    <a href="/success">Home</a>
+    <br>
+
+
+
+
+    <a href="/add">Add Some Travel Plans</a>
+
+    <table>
+        <tr>
+            <th>Destination</th>
+            <th>Plans</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+        </tr>
+
+        <h1>Looks like you're going places!</h1>
+        {% for thing in travel %}
+        <tr>
+            <td><a href='{% url 'travel' id=thing.id %}'>{{thing.destination}}</a></td>
+            <td>{{thing.plans}}</td>
+            <td>{{thing.startdate}}</td>
+            <td>{{thing.enddate}}</td>
+        </tr>
+        {% endfor %}
+        <br>
+    </table>
+    <table>
+        <h1>But where are your friends going!?</h1>
+        <tr>
+            <th>Your Friend</th>
+            <th>Their Username</th>
+            <th>Destination</th>
+            <th>Plans</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Want to go with them?</th>
+        </tr>
+
+        {% for thing in travel %}
+        <tr>
+            <td>{{thing.user.name}}</td>
+            <td>{{thing.user.username}}</td>
+            <td><a href='{% url 'travel' id=thing.id %}'>{{thing.destination}}</a></td>
+            <td>{{thing.plans}}</td>
+            <td>{{thing.startdate}}</td>
+            <td>{{thing.enddate}}</td>
+            <td><a href='{% url 'travel' id=thing.id %}'>Join</a></td>
+
+        </tr>
+        {% endfor %}
+        <br>
+    </table>
+
+
+
+
+
+</body>
+
+</html>
